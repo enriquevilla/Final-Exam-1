@@ -9,7 +9,7 @@ const {errorHandler} = require("./middleware/errorHandler");
 
 const app = express();
 
-app.post("/api/add-movie-actor/:movie_ID", jsonParser, (req, res) => {
+app.patch("/api/add-movie-actor/:movie_ID", jsonParser, (req, res) => {
     const {id, firstName, lastName} = req.body;
     const {movie_ID} = req.params;
 
