@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function BookForm( props ){
-    return(
+    const [inputValue, updateValue] = useState("");
+
+    return (
         <div>
-            {/*
-                Your code goes here
-            */}
+            <form onSubmit={(e) => props.handleSubmit(e)}>
+                <input 
+                    type="text" 
+                    placeholder="Search for a book"
+                    value={inputValue}
+                    onChange={(e) => updateValue(e.target.value)}
+                    name="bookName"
+                />
+                <button type="submit">
+                    Search
+                </button>
+            </form>
         </div>
     );
 }

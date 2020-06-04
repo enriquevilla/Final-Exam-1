@@ -21,17 +21,24 @@ const actorsCollection = mongoose.model( 'actors', actorsSchema );
 const Actors = {
     createActor : function( newActor ){
         return actorsCollection
-                .create( newActor )
-                .then( createdActor => {
-                    return createdActor;
-                })
-                .catch( err => {
-                    throw new Error( err );
-                });
+            .create( newActor )
+            .then( createdActor => {
+                return createdActor;
+            })
+            .catch( err => {
+                throw new Error( err );
+            });
+    },
+    getActorByName: function(firstName, lastName) {
+        return actorsCollection
+            .findOne({firstName: firstName, lastName: lastName})
+            .then(actor => {
+                return actor;
+            })
+            .catch(err => {
+                throw new Error(err);
+            })
     }
-    /*
-        Your code goes here
-    */
 }
 
 module.exports = {
